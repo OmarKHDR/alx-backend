@@ -20,6 +20,8 @@ babel = Babel(app)
 
 @babel.localeselector
 def get_locale():
+    '''Hello m y Deer
+    '''
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
