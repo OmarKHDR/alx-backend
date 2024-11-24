@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+'''This is not important
+'''
 import csv
 import math
 from typing import List
@@ -23,6 +26,8 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
+        '''Help please
+        '''
         assert page > 0
         assert page_size > 0
         get_index = __import__('0-simple_helper_function').get_index
