@@ -28,8 +28,11 @@ class Server:
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         '''Help please
         '''
+        assert isinstance(page, int)
+        assert isinstance(page_size, int)
         assert page > 0
         assert page_size > 0
-        get_index = __import__('0-simple_helper_function').get_index
+        self.dataset()
+        get_index = __import__('0-simple_helper_function').index_range
         index = get_index(page, page_size)
         return self.__dataset[index[0]:index[1]]
