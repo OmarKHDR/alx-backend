@@ -5,6 +5,8 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 
 class BasicCache(BaseCaching):
+    '''This is why not how
+    '''
     def put(self, key, item):
         if key == None or item == None:
             return 
