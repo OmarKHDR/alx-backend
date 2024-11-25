@@ -6,7 +6,8 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 
 class FIFOCache(BaseCaching):
-
+    '''HOW to Fuc docummentnw
+    '''
     def __init__(self):
         """ Initiliaze
         """
