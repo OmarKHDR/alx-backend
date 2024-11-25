@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 '''Hello World and holberton school
 '''
-BaseCaching = __import__('base_caching').BaseCaching
 from collections import deque
+BaseCaching = __import__('base_caching').BaseCaching
 
 
 class FIFOCache(BaseCaching):
@@ -18,7 +18,8 @@ class FIFOCache(BaseCaching):
         '''
         if key is None or item is None:
             return
-        if len(self.__queue) >= BaseCaching.MAX_ITEMS and key not in self.__queue:
+        if len(self.__queue) >= BaseCaching.MAX_ITEMS\
+                and key not in self.__queue:
             del self.cache_data[self.__queue[0]]
             item_del = self.__queue.popleft()
             print("DISCARD:", item_del)
@@ -32,17 +33,3 @@ class FIFOCache(BaseCaching):
             return self.cache_data[key]
         else:
             return None
-
-
-my_cache = FIFOCache()
-my_cache.put("A", "Hello")
-my_cache.put("B", "World")
-my_cache.put("C", "Holberton")
-my_cache.put("D", "School")
-my_cache.print_cache()
-my_cache.put("E", "Battery")
-my_cache.print_cache()
-my_cache.put("C", "Street")
-my_cache.print_cache()
-my_cache.put("F", "Mission")
-my_cache.print_cache()
