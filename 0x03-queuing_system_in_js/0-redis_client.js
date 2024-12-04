@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-import { createClient } from "redis";
+import { createClient } from 'redis';
 
 const client = createClient();
 
