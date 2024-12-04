@@ -1,9 +1,11 @@
 #!/usr/bin/node
 
-import { redisClientFactory } from 'kue';
 import { createClient } from 'redis';
+import {promisify} from 'util'
 
 const client = createClient();
+const async_set = promisify(client.set.bind(client));
+const async_get = promisify(client.get.bind(client));
 
 client.on('connect', () => {
   console.log('Redis client connected to the server');
@@ -13,22 +15,14 @@ client.on('error', (err) => {
   console.log('Redis client not connected to the server:', err);
 });
 
-function setNewSchool(schoolName, value) {
-  client.set(schoolName, value, (err, reply) => {
-    if (err) {
-      console.log(err);
-    }
-    redis.print(`reply: ${reply}`);
-  });
+async function setNewSchool(schoolName, value) {
+  const ret = await async_set(schoolName, value);
+  console.log('reply:', ret);
 }
 
-function displaySchoolValue(schoolName) {
-  client.get(schoolName, (err, reply) => {
-    if (err) {
-      console.log(err);
-    }
-    console.log(`${reply}`);
-  });
+async function displaySchoolValue(schoolName) {
+  const res = await async_get(schoolName);
+  console.log(res)
 }
 
 displaySchoolValue('Holberton');
