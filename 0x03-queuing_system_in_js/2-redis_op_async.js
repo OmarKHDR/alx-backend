@@ -1,6 +1,6 @@
 #!/usr/bin/node
 
-import { createClient } from 'redis';
+import { createClient, print } from 'redis';
 import {promisify} from 'util'
 
 const client = createClient();
@@ -17,7 +17,7 @@ client.on('error', (err) => {
 
 async function setNewSchool(schoolName, value) {
   const ret = await async_set(schoolName, value);
-  console.log('reply:', ret);
+  print('reply:', ret);
 }
 
 async function displaySchoolValue(schoolName) {

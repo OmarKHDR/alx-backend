@@ -1,7 +1,6 @@
 #!/usr/bin/node
 
-import { redisClientFactory } from 'kue';
-import { createClient } from 'redis';
+import { createClient, print } from 'redis';
 
 const client = createClient();
 
@@ -18,7 +17,7 @@ function setNewSchool(schoolName, value) {
     if (err) {
       console.log(err);
     }
-    redis.print(`reply: ${reply}`);
+    print(`reply: ${reply}`);
   });
 }
 
