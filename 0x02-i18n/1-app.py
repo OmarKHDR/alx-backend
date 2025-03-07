@@ -2,14 +2,12 @@
 """File docs is here"""
 from flask import Flask, render_template
 from flask_babel import Babel
-from babel import Locale
-import pytz
 
 
 class Config:
     LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_TIMEZONE = pytz.timezone('UTC')
-    BABEL_DEFAULT_LOCALE = Locale('en')
+    BABEL_DEFAULT_TIMEZONE = "UTC"
+    BABEL_DEFAULT_LOCALE = "en"
 
 
 app = Flask(__name__)
