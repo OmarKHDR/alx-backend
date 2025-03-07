@@ -1,35 +1,28 @@
 #!/usr/bin/env python3
-'''Hello world
-'''
-from flask import Flask, render_template, request
+"""File docs is here"""
+from flask import Flask, render_template
 from flask_babel import Babel
+from babel import Locale
+import pytz
 
 
 class Config:
-    '''This is docs
-    '''
     LANGUAGES = ["en", "fr"]
-    BABEL_DEFAULT_LOCALE = "en"
-    BABEL_DEFAULT_TIMEZONE = "UTC"
+    default_timezone = pytz.timezone('UTC')
+    default_local = Locale('en')
 
 
 app = Flask(__name__)
-app.config.from_object(Config)
 babel = Babel(app)
-
-
-@babel.localeselector
-def get_locale():
-    return request.accept_languages.best_match(app.config['LANGUAGES'])
+app.config.from_object(Config)
 
 
 @app.route('/')
-def sayHi():
-    '''Hi is said
-    '''
-    return render_template('2-index.html')
+def home():
+    """Home function route"""
+    return render_template('1-index.html')
 
 
-if __name__ == "__main__":
-    """ Main Function """
-    app.run(host='0.0.0.0', port=5000)
+if __name__ == '__main__':
+    """Module level docs"""
+    app.run()
