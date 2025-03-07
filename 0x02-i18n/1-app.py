@@ -8,8 +8,8 @@ import pytz
 
 class Config:
     LANGUAGES = ["en", "fr"]
-    default_timezone = pytz.timezone('UTC')
-    default_local = Locale('en')
+    BABEL_DEFAULT_TIMEZONE = pytz.timezone('UTC')
+    BABEL_DEFAULT_LOCALE = Locale('en')
 
 
 app = Flask(__name__)
